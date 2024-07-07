@@ -17,8 +17,7 @@ def player_move(board, player):
             print("Invalid input. Please enter a number.")
 
 
-def save_result(winner, looser):
-    result = 'winner: ' + winner.name + ' looser: ' + looser.name
+def save_result(result):
     with open('game_results.txt', 'a') as file:
         file.write(result + '\n')
 
@@ -41,10 +40,11 @@ def run():
         if win == 1:
             board.print_board()
             print(f"{current_player.name} wins!\n")
+            opponent = first_player if turn == 0 else second_player
+            save_result('winner: ' + current_player.name + ' looser: ' + opponent.name)
         elif win == 0:
             board.print_board()
             print("It's a tie!")
-        if win != -1:
             opponent = first_player if turn == 0 else second_player
-            save_result(current_player, opponent)
+            save_result(current_player.name + ' ties with: ' + opponent.name)
         turn = 0 if turn else 1
