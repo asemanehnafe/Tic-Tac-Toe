@@ -18,14 +18,15 @@ def print_guide():
 
 
 def run():
-    print_guide()
-    command = input()
-    match command:
-        case 'start':
-            GameMenu.run()
-        case 'history':
-            show_history()
-        case 'exit':
-            return
-        case _:
-            print('Invalid command')
+    while True:
+        print_guide()
+        command = input()
+        match command:
+            case 'start':
+                GameMenu.run()
+            case 'history':
+                show_history()
+            case 'exit':
+                return
+            case _:
+                print('Invalid command')
