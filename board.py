@@ -9,15 +9,13 @@ class Board:
             print("---------")
         print("\n")
 
-    def check_win(self, player):
+    def check_win(self, player, current_row, current_col):
         # Check rows
-        for row in self.board:
-            if all(cell == player for cell in row):
-                return 1
+        if all(cell == player for cell in self.board[current_row][:]):
+            return 1
         # Check columns
-        for col in range(3):
-            if all(self.board[row][col] == player for row in range(3)):
-                return 1
+        if all(self.board[row][current_col] == player for row in range(3)):
+            return 1
         # Check diagonals
         if all(self.board[i][i] == player for i in range(3)) or \
                 all(self.board[i][2 - i] == player for i in range(3)):
